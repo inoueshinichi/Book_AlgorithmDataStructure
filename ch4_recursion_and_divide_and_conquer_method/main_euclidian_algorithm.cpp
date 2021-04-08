@@ -1,7 +1,7 @@
 /**
  * @file main_euclidian_algorithm.cpp
  * @author your name (you@domain.com)
- * @brief ユークリッドの互除法
+ * @brief ユークリッドの互除法 O(logN)
  * @version 0.1
  * @date 2021-04-07
  * 
