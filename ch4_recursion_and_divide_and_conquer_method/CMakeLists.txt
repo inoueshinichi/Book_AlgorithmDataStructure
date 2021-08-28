@@ -11,3 +11,7 @@ add_executable(Fibonacci
     main_fibonacci.cpp
 )
 
+add_executable(RecursivePartialProblem
+    main_recursive_partial_problem.cpp
+)
+
