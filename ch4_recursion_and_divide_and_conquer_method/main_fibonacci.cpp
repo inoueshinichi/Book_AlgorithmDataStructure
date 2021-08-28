@@ -67,38 +67,57 @@ int main(int argc, char** argv)
     std::cin >> N;
     std::cout << "Data size: " << N << std::endl;
 
-    auto start = high_resolution_clock::now();
-    fibo(N);
-    auto end = high_resolution_clock::now();
-    auto duration = end - start;
-    double duration_us = duration_cast<microseconds>(duration).count();
-    std::cout << duration_us << "[us]" << std::endl;
+    // フィボナッチ数列　再帰関数
+    {
+        std::printf("===== フィボナッチ数列　再帰関数 =====\n");
+        auto start = high_resolution_clock::now();
 
-    start = high_resolution_clock::now();
-    fibo_for_loop(N);
-    end = high_resolution_clock::now();
-    duration = end - start;
-    duration_us = duration_cast<microseconds>(duration).count();
-    std::cout << duration_us << "[us]" << std::endl;
+        fibo(N);
 
+        auto end = high_resolution_clock::now();
+        auto duration = end - start;
+        double duration_us = duration_cast<microseconds>(duration).count();
+        std::cout << duration_us << "[us]" << std::endl;
+    }
     
-    // fibo(N)の答えをメモ化する配列
-    std::vector<long long> memo;
-    memo.assign(N, -1); // メモ化用配列を-1で初期化する
-    start = high_resolution_clock::now();
 
-    // メモ化したフィボナッチ数列の再帰関数
-    fibo_memo(N-1, memo);
+    // フィボナッチ数列　ループ
+    {
+        std::printf("===== フィボナッチ数列　ループ =====\n");
 
-    // memo[0]..., memo[N]に答えが格納されている
-    for (int i = 2; i < N; ++i)
-        std::printf("%d 項目: %lld\n", i, memo[i]);
+        auto start = high_resolution_clock::now();
 
-    end = high_resolution_clock::now();
-    duration = end - start;
-    duration_us = duration_cast<microseconds>(duration).count();
-    std::cout << duration_us << "[us]" << std::endl;
+        fibo_for_loop(N);
 
+        auto end = high_resolution_clock::now();
+        auto duration = end - start;
+        auto duration_us = duration_cast<microseconds>(duration).count();
+        std::cout << duration_us << "[us]" << std::endl;
+    }
+    
+
+    // フィボナッチ数列　再帰関数＋メモ化
+    {
+        std::printf("===== フィボナッチ数列　再帰関数+メモ化 =====\n");
+
+        // fibo(N)の答えをメモ化する配列
+        std::vector<long long> memo;
+        memo.assign(N, -1); // メモ化用配列を-1で初期化する
+
+        auto start = high_resolution_clock::now();
+
+        // メモ化したフィボナッチ数列の再帰関数
+        fibo_memo(N - 1, memo);
+
+        // memo[0]..., memo[N]に答えが格納されている
+        for (int i = 2; i < N; ++i)
+            std::printf("%d 項目: %lld\n", i, memo[i]);
+
+        auto end = high_resolution_clock::now();
+        auto duration = end - start;
+        auto duration_us = duration_cast<microseconds>(duration).count();
+        std::cout << duration_us << "[us]" << std::endl;
+    }
 
     return 0;
 }
