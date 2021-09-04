@@ -12,7 +12,31 @@
 #include <iostream>
 #include <initializer_list>
 
+////////////////////////////////////////
+// 一般化した二分探索法の基本形
+////////////////////////////////////////
 
+// xが条件を満たすかどうか
+bool P(int x) {
+
+}
+
+// P(x) = true となる最小の整数xを返す
+int general_binary_search() {
+    int left, right; // P(left) = false, P(right) = true となるようにする
+
+    while (right - left > 1) {
+        int mid = left + (right - left) / 2;
+        if (P(mid)) right = mid;
+        else left = mid;
+    }
+    return right;
+}
+
+
+////////////////////////////////////////
+// ソート済み配列に対する二分探索法
+////////////////////////////////////////
 
 // 目的の値keyの添字を返す(存在しない場合、-1)
 int binary_search(int key, const std::vector<int> &a) {
