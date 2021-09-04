@@ -30,21 +30,6 @@ auto chmin = [](auto &a, auto b)
 long long recursive_func(int i, std::vector<long long> &dp, std::vector<long long> &h) {
     // dp[i]の最小コストを計算する.
 
-    // // ベースライン
-    // if (i == 0) {
-    //     return dp[0];
-    // }
-    // else if (i == 1) {
-    //     dp[i] = recursive_func(i - 1, dp, h) + std::abs(h[i] - h[i - 1]);
-    //     return dp[i];
-    // }
-
-    // long long cost1 = recursive_func(i - 1, dp, h); // dp[i-1]を求める
-    // long long cost2 = recursive_func(i - 2, dp, h); // dp[i-2]を求める
-    // dp[i] = std::min(cost1 + std::abs(h[i] - h[i - 1]), cost2 + std::abs(h[i] - h[i - 2]));
-
-    // -------------------------------
-
     // メモ化されている場合、そのままリターン
     if (dp[i] < INF) {
         return dp[i];
@@ -90,47 +75,55 @@ int main(int, char**) {
     // 初期条件
     dp[0] = 0;
 
-    // // v0) 各切り株に到達する際の最小コストを計算する
-    // {
-    //     for (int i = 1; i < N; ++i)
-    //     {
-    //         if (i == 1)
-    //             dp[i] = std::abs(h[i] - h[i - 1]);
-    //         else
-    //         {
-    //             dp[i] = std::min(
-    //                 dp[i - 1] + std::abs(h[i] - h[i - 1]) // [i-1]から[i]に飛ぶ
-    //                 ,
-    //                 dp[i - 2] + std::abs(h[i] - h[i - 2]) // [i-2]から[i]に一個飛ばしで飛ぶ
-    //             );
-    //         }
-    //     }
-    // }
+    bool is_ver0 = false;
+    bool is_ver1 = false;
+    bool is_ver2 = false;
+    bool is_ver3 = true;
+
+    // v0) 各切り株に到達する際の最小コストを計算する
+    if (is_ver0)
+    {
+        for (int i = 1; i < N; ++i)
+        {
+            if (i == 1)
+                dp[i] = std::abs(h[i] - h[i - 1]);
+            else
+            {
+                dp[i] = std::min(
+                    dp[i - 1] + std::abs(h[i] - h[i - 1]), // [i-1]から[i]に飛ぶ
+                    dp[i - 2] + std::abs(h[i] - h[i - 2]) // [i-2]から[i]に一個飛ばしで飛ぶ
+                );
+            }
+        }
+    }
 
 
-    // // v1-[pull base]) 「貰う遷移形式」「緩和」を意識した動的計画法で解く O(N)
-    // {
-    //     for (int i = 1; i < N; ++i) {
-    //         chmin(dp[i], dp[i-1] + std::abs(h[i] - h[i-1]));
-    //         if (i > 1) {
-    //             chmin(dp[i], dp[i-2] + std::abs(h[i] - h[i-2]));
-    //         }
-    //     }
-    // }
+    // v1-[pull base]) 「貰う遷移形式」「緩和」を意識した動的計画法で解く O(N)
+    if (is_ver1)
+    {
+        for (int i = 1; i < N; ++i) {
+            chmin(dp[i], dp[i-1] + std::abs(h[i] - h[i-1]));
+            if (i > 1) {
+                chmin(dp[i], dp[i-2] + std::abs(h[i] - h[i-2]));
+            }
+        }
+    }
 
-    // // v1-[push base]) 「配る遷移形式」による動的計画法 O(N)
-    // {
-    //     for (int i = 0; i < N; ++i) {
-    //         if (i + 1 < N) {
-    //             chmin(dp[i+1], dp[i] + std::abs(h[i] - h[i+1]));
-    //         }
-    //         if (i + 2 < N) {
-    //             chmin(dp[i+2], dp[i] + std::abs(h[i] - h[i+2]));
-    //         }
-    //     }
-    // }
+    // v1-[push base]) 「配る遷移形式」による動的計画法 O(N)
+    if (is_ver2)
+    {
+        for (int i = 0; i < N; ++i) {
+            if (i + 1 < N) {
+                chmin(dp[i+1], dp[i] + std::abs(h[i] - h[i+1]));
+            }
+            if (i + 2 < N) {
+                chmin(dp[i+2], dp[i] + std::abs(h[i] - h[i+2]));
+            }
+        }
+    }
 
     // v2) 再帰関数で動的計画法を解く
+    if (is_ver3)
     {
         recursive_func(N - 1, dp, h);
     }
