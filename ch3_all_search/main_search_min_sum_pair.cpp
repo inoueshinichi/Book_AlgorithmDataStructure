@@ -51,7 +51,7 @@ int main(int, char**)
             if (a[i] + b[j] < K) {
                 continue;
             }
-　
+            
             // 最小値を更新
             if (a[i] + b[j] < min_value) {
                 min_value = a[i] + b[j];
