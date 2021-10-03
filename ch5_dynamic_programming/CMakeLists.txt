@@ -19,3 +19,9 @@ add_executable(DPEditDistance
     main_dp_edit_distance.cpp
 )
 target_compile_features(DPEditDistance PRIVATE cxx_std_17)
+
+# 区間分割問題
+add_executable(DPSplit
+    main_dp_split.cpp
+)
+target_compile_features(DPSplit PRIVATE cxx_std_17)
