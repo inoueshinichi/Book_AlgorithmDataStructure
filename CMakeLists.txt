@@ -13,3 +13,5 @@ add_subdirectory(ch4_recursion_and_divide_and_conquer_method)
 add_subdirectory(ch5_dynamic_programming)
 add_subdirectory(ch6_binary_search)
 add_subdirectory(ch7_greedy_algorithm)
+add_subdirectory(ch8_data_structure)
+
