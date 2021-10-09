@@ -11,3 +11,14 @@ add_executable(BinarySearchAgeQuize
 )
 target_compile_features(BinarySearchAgeQuize PRIVATE cxx_std_17)
 
+
+add_executable(BinarySeaerchMinSumPair
+    main_bs_min_sum_pair.cpp
+)
+target_compile_features(BinarySeaerchMinSumPair PRIVATE cxx_std_17)
+
+
+add_executable(BinarySeaerchShoterProblem
+    main_bs_shoter_problem.cpp
+)
+target_compile_features(BinarySeaerchShoterProblem PRIVATE cxx_std_17)
