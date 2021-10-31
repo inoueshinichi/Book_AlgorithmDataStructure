@@ -17,4 +17,5 @@ add_subdirectory(ch8_data_structure)
 add_subdirectory(ch9_stack_queue)
 add_subdirectory(ch10_graph_tree)
 add_subdirectory(ch11_union_find)
+add_subdirectory(ch12_sort)
 
