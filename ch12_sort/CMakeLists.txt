@@ -26,3 +26,10 @@ add_executable(HeapSort
     main_heap_sort.cpp
 )
 target_compile_features(HeapSort PRIVATE cxx_std_17)
+
+
+# バケットソート
+add_executable(BucketSort
+    main_bucket_sort.cpp
+)
+target_compile_features(BucketSort PRIVATE cxx_std_17)
