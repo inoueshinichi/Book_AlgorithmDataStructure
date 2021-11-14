@@ -107,7 +107,7 @@ void search_graph(const Graph& G, vector<bool>& seen, TODO<int>& todo, int s) {
 
 int main(int, char**) {
 
-    printf("有効グラフ\n");
+    
 
     // 超点数
     int N = 8;
@@ -116,7 +116,7 @@ int main(int, char**) {
     Graph G(N);
     
 #ifdef DFS
-    // 有効グラフ
+    printf("有効グラフ\n");
     G[0].push_back(5);
     G[1].push_back(3); G[1].push_back(6);
     G[2].push_back(5); G[2].push_back(7);
@@ -126,7 +126,7 @@ int main(int, char**) {
     G[6].push_back(7);
     G[7].push_back(0);
 #else
-    // 無向グラフ
+    printf("無効グラフ\n");
     G[0].push_back(3); G[0].push_back(5); G[0].push_back(7);
     G[1].push_back(3); G[1].push_back(4); G[1].push_back(6);
     G[2].push_back(4); G[2].push_back(5); G[2].push_back(7);

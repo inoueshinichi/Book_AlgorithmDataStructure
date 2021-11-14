@@ -12,3 +12,17 @@ add_executable(GS_BFS_1
     main_gs_bfs_1.cpp
 )
 target_compile_features(GS_BFS_1 PRIVATE cxx_std_17)
+
+
+# 深さ優先探索-2
+add_executable(GS_DFS_2
+    main_gs_dfs_2.cpp
+)
+target_compile_features(GS_DFS_2 PRIVATE cxx_std_17)
+
+
+# 幅優先探索-2
+add_executable(GS_BFS_2
+    main_gs_bfs_2.cpp
+)
+target_compile_features(GS_BFS_2 PRIVATE cxx_std_17)
