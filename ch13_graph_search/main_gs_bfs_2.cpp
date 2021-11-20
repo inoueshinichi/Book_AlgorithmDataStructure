@@ -66,7 +66,7 @@ int main(int, char **)
     printf("始点: ");
     cin >> sv;
 
-    // 深さ優先探索
+    // 幅優先探索
     vector<int> dist = BFS_MinDist(G, sv);
 
     // 出力結果
