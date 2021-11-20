@@ -1,41 +1,28 @@
 /**
- * @file main_gs_dfs_2.cpp
+ * @file main_gs_dfs_s-t_path.cpp
  * @author your name (you@domain.com)
- * @brief 深さ優先探索　再帰関数を使用した方法
+ * @brief 深さ優先探索によるs-tパスの存在チェック.
  * @version 0.1
- * @date 2021-11-14
+ * @date 2021-11-20
  * 
  * @copyright Copyright (c) 2021
  * 
  */
-#include <cstdio>
 #include <iostream>
 #include <vector>
 using namespace std;
-
 using Graph = vector<vector<int>>;
-vector<int> seen;
 
 // 深さ優先探索
-void BFS(const Graph& G, int v) {
-    // 訪問済みにする
-    seen[v] = true;
-
-    cout << v << endl;
-
-    /*行きがけ順で処理する区間*/
-
-    /**************************/
+vector<bool> seen;
+void DFS(const Graph& G, int v) {
+    seen[v] = true; // vを訪問済みにする
 
     // vから行ける各頂点next_vについて
     for (auto next_v : G[v]) {
-        if (seen[next_v]) continue; // next_vが探索済みならキャンセル
-        BFS(G, next_v); // 再帰的に探索
+        if (seen[next_v]) continue; // next_vが探索済みなら探索しない
+        DFS(G, next_v); // 再帰的に探索
     }
-
-    /*帰りがけ順で処理する区間*/
-
-    /**************************/
 }
 
 
@@ -66,10 +53,19 @@ int main(int, char**) {
     seen.assign(N, false); // 全頂点を「未訪問」に初期化
 
     int sv;
-    printf("始点: "); cin >> sv;
+    printf("始点s: "); cin >> sv; // 始点: s
 
     // 深さ優先探索
-    BFS(G, sv);
+    DFS(G, sv);
 
-    cout << "OK" << endl;
+    int tv;
+    printf("s-tパスのt: "); cin >> tv; // t
+    if (tv > 7) {
+        printf("無効です\n");
+        return 0;
+    }
+
+    if (seen[tv]) cout << "s-tパスは存在します\n";
+    else cout << "s-tパスは存在しません\n";
+
 }

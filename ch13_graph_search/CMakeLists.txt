@@ -26,3 +26,24 @@ add_executable(GS_BFS_2
     main_gs_bfs_2.cpp
 )
 target_compile_features(GS_BFS_2 PRIVATE cxx_std_17)
+
+
+# 深さ優先探索によるs-tパスの存在チェック
+add_executable(GS_BFS_S-T_PATH
+    main_gs_dfs_s-t_path.cpp
+)
+target_compile_features(GS_BFS_S-T_PATH PRIVATE cxx_std_17)
+
+
+# 深さ優先探索による二部グラフの判定
+add_executable(GS_BFS_BIPARTITE
+    main_gs_bipartite_graph.cpp
+)
+target_compile_features(GS_BFS_BIPARTITE PRIVATE cxx_std_17)
+
+
+# 深さ優先探索によるトポロジカルソート
+add_executable(GS_BFS_TOPOLOGICAL_SORT
+    main_gs_topological_sort.cpp
+)
+target_compile_features(GS_BFS_TOPOLOGICAL_SORT PRIVATE cxx_std_17)
