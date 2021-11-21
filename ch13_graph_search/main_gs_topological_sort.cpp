@@ -41,6 +41,7 @@ void topological_sort(const Graph& G, vector<int>& order) {
     reverse(order.begin(), order.end()); // 逆順
 }
 
+
 int main(int, char**) {
 
     // 超点数
