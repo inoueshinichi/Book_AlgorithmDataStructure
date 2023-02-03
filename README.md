@@ -1,5 +1,6 @@
 # AlgorithmDataStructure
 アルゴリズムとデータ構造  
+https://bookclub.kodansha.co.jp/product?item=0000275430　　
 
 1秒間で処理できる計算ステップ回数の目安  
 `10^9` = 1,000,000,000 = 10億回 = 1GHz  
